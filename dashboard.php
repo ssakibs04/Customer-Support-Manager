@@ -1,8 +1,9 @@
 <?php
-include 'config.php';
-
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "customer_support_db";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,19 +13,19 @@ include 'config.php';
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="sidebar">
+<div class="sidebar">
+<div class="sidebar">
         <div class="header">Railway Customer Support</div>
         <a href="manager/manager_management.php">Managers</a>
-        <a href="ticket/ticket/ticketing_system.php">Ticketing System</a>
+        <a href="complaints/complaint_ticketing.php">Complaint Tracking</a>
+        <a href="feedback/user_feedback.php">User Feedback</a>
+        <a href="ticket/ticketing_system.php">Ticketing System</a>
         <a href="live_chat_support.php">Live Chat Support</a>
         <a href="automated_responses.php">Automated Responses</a>
-        <a href="complaint_tracking.php">Complaint Tracking</a>
-        <a href="feedback/user_feedback.php">User Feedback</a>
         <a href="multi_channel_support.php">Multi-Channel Support</a>
         <form action="logout.php" method="post">
-    <button type="submit" class="logout-btn">Logout</button>
-</form>
-
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
     </div>
     <div class="content">
         <div class="dashboard">
@@ -45,4 +46,3 @@ include 'config.php';
     </div>
 </body>
 </html>
-

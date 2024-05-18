@@ -12,82 +12,123 @@
             padding: 0;
         }
 
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #2c3e50;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar a:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar a:hover {
+            background-color: #44526c;
+        }
+
         .container {
-            max-width: 800px;
-            margin: 20px auto;
+            margin-left: 250px; /* Same as the width of the sidebar */
             padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
         }
 
         h2 {
             margin-top: 0;
         }
 
-        .feedback-entry {
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
         }
 
-        .feedback-entry:last-child {
-            border-bottom: none;
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
         }
 
-        .feedback-info {
-            font-weight: bold;
+        th {
+            background-color: #f2f2f2;
         }
 
-        .feedback-rating {
-            color: green;
-            font-weight: bold;
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .create-btn {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .create-btn:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
+    <div class="sidebar">
+        <div class="header">Railway Customer Support</div>
+        <a href="../manager/manager_management.php">Managers</a>
+        <a href="../complaints/complaint_ticketing.php">Complaint Tracking</a>
+        <a href="../feedback/user_feedback.php">User Feedback</a>
+        <a href="../ticket/ticketing_system.php">Ticketing System</a>
+        <a href="../live_chat_support.php">Live Chat Support</a>
+        <a href="../automated_responses.php">Automated Responses</a>
+        <a href="../multi_channel_support.php">Multi-Channel Support</a>
+        <form action="../logout.php" method="post">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+    
     <div class="container">
         <h2>User Feedback</h2>
 
-        <?php
-        // Database connection
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $database = "customer_support_db"; // Replace with your actual database name
 
-        // Create connection
-        $conn = mysqli_connect($servername, $username, $password, $database);
-
-        // Check connection
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
-
-        // Fetch feedback data from the database
-        $sql = "SELECT * FROM feedback";
-        $result = mysqli_query($conn, $sql);
-
-        // Check if the query executed successfully
-        if ($result && mysqli_num_rows($result) > 0) {
-            // Display feedback entries
-            while ($row = mysqli_fetch_assoc($result)) {
-                ?>
-                <div class="feedback-entry">
-                    <div class="feedback-info">Feedback ID: <?php echo $row['feedback_id']; ?></div>
-                    <div class="feedback-info">Customer Name: <?php echo $row['customer_name']; ?></div>
-                    <div class="feedback-info">Feedback: <?php echo $row['feedback']; ?></div>
-                    <div class="feedback-rating">Rating: <?php echo $row['rating']; ?></div>
-                </div>
-                <?php
-            }
-        } else {
-            echo "No feedback entries found.";
-        }
-
-        // Close connection
-        mysqli_close($conn);
-        ?>
+        <!-- Display all feedback -->
+        <table>
+            <tr>
+                <th>Feedback ID</th>
+                <th>Customer Name</th>
+                <th>Feedback</th>
+                <th>Rating</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Alice</td>
+                <td>Great service! Will definitely recommend.</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Bob</td>
+                <td>Could improve on response time.</td>
+                <td>3</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </table>
     </div>
 </body>
 </html>

@@ -108,6 +108,7 @@ $managers = getAllManagers($conn);
     </style>
 </head>
 <body>
+    
     <div class="container">
         <h2>Manager Management</h2>
 
